@@ -82,6 +82,8 @@ The CI workflow (`.github/workflows/ci.yml`) has a `TODO` for a Docker build job
 
 2. **Add a build badge** to your README showing the CI status.
 
+[![CI](https://github.com/lemith/cd-mcm-exercise-Mitterbauer/actions/workflows/ci.yml/badge.svg)](https://github.com/lemith/cd-mcm-exercise-Mitterbauer/actions/workflows/ci.yml)
+
 **Deliverable:** Working CI pipeline (green check on your PR). Screenshot of the Actions run.
 
 ---
