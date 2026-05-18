@@ -40,11 +40,15 @@ jobs:
 
   # TODO: Add lint job using golangci-lint
   # Hint: Use the golangci/golangci-lint-action@v4 action
-      - name: Lint job
-        uses: golangci/golangci-lint-action@d6238b002a20823d52840fda27e2d4891c5952dc
-        with:
-          version: v1.52.2
-          args: --timeout 5m
+  lint:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@d6238b002a20823d52840fda27e2d4891c5952dc
+        - name: Lint job
+          uses: golangci/golangci-lint-action@d6238b002a20823d52840fda27e2d4891c5952dc
+          with:
+            version: v1.52.2
+            args: --timeout 5m
 
   docker-build:
     runs-on: ubuntu-latest
