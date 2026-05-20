@@ -45,12 +45,10 @@ jobs:
         run: go tool cover -html=coverage.out -o coverage.html
 
       - name: Upload coverage artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: coverage-${{ matrix.go-version }}-${{ matrix.os }}
-          path: |
-            coverage.out
-            coverage.html
+          path: coverage.out
 
       - name: Build
         run: go build -o api-server ./cmd/api
