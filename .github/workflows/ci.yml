@@ -42,10 +42,12 @@ jobs:
         run: go tool cover -html=coverage.out -o coverage.html
 
       - name: Upload coverage artifact
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ matrix.go-version }}-${{ matrix.os }}
-          path: coverage.out
+          path: |
+            coverage.out
+            coverage.html
 
       - name: Build
         run: go build -o api-server ./cmd/api
@@ -100,7 +102,7 @@ jobs:
       - name: Download coverage artifacts
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: coverage-1.26-ubuntu-latest/coverage.out
+          name: coverage-1.26-ubuntu-latest
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@59db25f34e16620e48ab4bb9e4a5dce155cb5432 # v8.0.0
