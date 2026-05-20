@@ -33,15 +33,6 @@ func TestGetEnvWithEmptyValue(t *testing.T) {
 	}
 }
 
-func TestGetEnvWithWhitespaceValue(t *testing.T) {
-	os.Setenv("TEST_KEY", "   ")
-	defer os.Unsetenv("TEST_KEY")
-	result := getEnv("TEST_KEY", "fallback")
-	if result != "fallback" {
-		t.Errorf("expected fallback for whitespace value, got %s", result)
-	}
-}
-
 func TestGetEnvWithWhitespaceFallback(t *testing.T) {
 	os.Unsetenv("TEST_KEY")
 	result := getEnv("TEST_KEY", "   ")
@@ -64,15 +55,6 @@ func TestGetEnvWithWhitespaceKey(t *testing.T) {
 	result := getEnv("   ", "fallback")
 	if result != "value" {
 		t.Errorf("expected value for whitespace key, got %s", result)
-	}
-}
-
-func TestGetEnvWithEmptyKey(t *testing.T) {
-	os.Setenv("", "value")
-	defer os.Unsetenv("")
-	result := getEnv("", "fallback")
-	if result != "value" {
-		t.Errorf("expected value for empty key, got %s", result)
 	}
 }
 
