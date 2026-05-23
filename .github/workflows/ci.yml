@@ -95,6 +95,18 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           output: 'trivy-report.txt'
+      
+      - name: Generate Trivy JSON report      # ← neu
+        uses: aquasecurity/trivy-action@master
+        if: always()
+        with:
+          image-ref: product-catalog:${{ github.sha }}
+          format: 'json'
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          output: 'trivy-report.json'
 
       - name: Upload Trivy report
         uses: actions/upload-artifact@v4
