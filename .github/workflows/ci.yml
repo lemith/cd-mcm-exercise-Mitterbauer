@@ -96,7 +96,7 @@ jobs:
           vuln-type: 'os,library'
           output: 'trivy-report.txt'
       
-      - name: Generate Trivy JSON report      # ← neu
+      - name: Generate Trivy JSON report     
         uses: aquasecurity/trivy-action@master
         if: always()
         with:
@@ -113,5 +113,7 @@ jobs:
         if: always()
         with:
           name: trivy-report-${{ github.sha }}
-          path: trivy-report.txt
+          path: |                             
+            trivy-report.txt
+            trivy-report.json
           retention-days: 30
